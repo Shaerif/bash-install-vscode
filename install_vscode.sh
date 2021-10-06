@@ -28,6 +28,5 @@ code --install-extension ms-vscode.cpptools-extension-pack # C++ popular extensi
 code --install-extension ms-vscode.cpptools-themes # Colorization
 code --install-extension jeff-hykin.better-cpp-syntax # Syntax highlighting
 code --install-extension ms-vscode.cmake-tools # CMake
-code --install-extension twxs.cmake # CMake
 code --install-extension notskm.clang-tidy # Clang
 code --install-extension alesiong.clang-tidy-linter # Clang linting
