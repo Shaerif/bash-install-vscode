@@ -1,5 +1,6 @@
 #!/bin/sh
-# run from root or with sudo
+# Claire Guerin 2021
+# run as root / admin
 
 # 1: Get snap if not automatically installed on Ubuntu
 
