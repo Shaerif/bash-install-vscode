@@ -1,6 +1,12 @@
 #!/bin/sh
 # run from root or with sudo
 
+# Get build essentials, including: 
+# - GNU debugger
+# - g++/GNU compiler collection
+# - tools and libraries that are required to compile a program (G++, dpkg-dev, GCC and make, etc.).
+sudo apt install build-essential
+
 # 1: Get snap if not automatically installed on Ubuntu
 
 MINVER=16
