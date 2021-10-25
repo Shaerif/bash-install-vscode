@@ -1,8 +1,5 @@
 ## Welcome to the 2021 course "Programming C++ for Biologists"!
 
-* Table of contents 
-{:toc}
-
 ### Schedule
 
 | Week | Modules | 
