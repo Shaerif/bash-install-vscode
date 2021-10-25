@@ -1,37 +1,38 @@
-## Welcome to GitHub Pages
+## Welcome to the 2021 course "Programming C++ for Biologists"!
 
-You can use the [editor on GitHub](https://github.com/ClaireGuerin/bash-install-vscode/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+### Schedule
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+| Week | Modules | 
+| 15/11 - 19/11 | 1-7 |
+| 22/11 - 26/11 | 8 - 15 |
+| 29/11 - 03/12 | 15 - 22 |
+| 06/12 - 10/12 | Project | 
+| 13/12 - 17/12 | Project |
+| 20/12 - 24/12 | Project |
 
-### Markdown
+### Resources
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+#### Install Visual Studio Code on Windows (UWP and Local Machine)
 
-```markdown
-Syntax highlighted code block
+Go to [this](https://github.com/HHildenbrandt/uwp_vscode_setup) repository and follow the instructions.
 
-# Header 1
-## Header 2
-### Header 3
+#### Install Visual Studio on Ubuntu
 
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/ClaireGuerin/bash-install-vscode/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+Follow [these instructions](https://github.com/ClaireGuerin/bash-install-vscode/).
 
 ### Support or Contact
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+Having trouble installing VSCode? Call an assistant during class or send us an email!
+
+### Notes on GitHub Pages
+
+We can use the [editor on GitHub](https://github.com/ClaireGuerin/bash-install-vscode/edit/gh-pages/index.md) to maintain and preview the content for the website in Markdown files.
+
+Whenever we commit to the repository, GitHub Pages will run Jekyll to rebuild the pages in the site, from the content in the Markdown files.
+
+The site will use the layout and styles from the Jekyll theme selected in [repository settings](https://github.com/ClaireGuerin/bash-install-vscode/settings/pages). In this case, *minimal*. The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+
+#### Documentation
+- [GitHub Pages](https://docs.github.com/categories/github-pages-basics/)
+- [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/)
+- [Jekyll](https://jekyllrb.com/)
