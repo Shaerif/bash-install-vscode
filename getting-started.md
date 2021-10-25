@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "Get Ready"
+title: "Getting Started"
 permalink: /getting-started
 ---
 
