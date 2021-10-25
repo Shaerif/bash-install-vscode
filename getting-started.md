@@ -1,3 +1,9 @@
+---
+layout: page
+title: "Getting Started"
+permalink: /getting-started/
+---
+
 ## Getting Started
 
 First off, let's install Visual Studio Code on your machine! Visual Studio Code (VSCode for short) is an advanced text editor that is cross-platform. 
