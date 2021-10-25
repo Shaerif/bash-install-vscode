@@ -1,13 +1,7 @@
-layout: page
-title: "Get Ready"
-permalink: /get-ready/
-
 ## Get Ready
 
 First off, let's install Visual Studio Code on your machine! Visual Studio Code (VSCode for short) is an advanced text editor that is cross-platform. 
 We will use VSCode to learn C++, so buckle up and let's get started!
-
-### Are you using your own computer?
 
 ### Windows OS / UWP
 Be it on your own machine, on a university laptop or a university desktop computer. 
