@@ -17,7 +17,7 @@
 
 ### Resources
 
-[Instructions](getting-started.md)
+[Instructions](https://claireguerin.github.io/bash-install-vscode/getting-started)
 
 #### Install Visual Studio Code on Windows (UWP and Local Machine)
 
