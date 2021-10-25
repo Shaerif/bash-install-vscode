@@ -14,3 +14,5 @@ Follow these [installation instructions](https://github.com/HHildenbrandt/uwp_vs
 [Installation instructions](https://github.com/ClaireGuerin/bash-install-vscode/)
 
 *These instructions are for Linux Distributions with `apt`, such as Ubuntu or Debian for instance. You will need admin rights to install VSCode.*
+
+![Home](/img/home.jpg) Back
