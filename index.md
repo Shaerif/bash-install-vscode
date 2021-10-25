@@ -17,7 +17,7 @@
 
 ### Resources
 
-[Instructions](getting-started/index.md)
+[Instructions](getting-started.md)
 
 #### Install Visual Studio Code on Windows (UWP and Local Machine)
 
