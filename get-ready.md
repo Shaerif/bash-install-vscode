@@ -1,3 +1,9 @@
+---
+layout: page
+title: "Get Ready"
+permalink: /get-ready
+---
+
 ## Get Ready
 
 First off, let's install Visual Studio Code on your machine! Visual Studio Code (VSCode for short) is an advanced text editor that is cross-platform. 
