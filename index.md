@@ -25,7 +25,7 @@ Go to [this](https://github.com/HHildenbrandt/uwp_vscode_setup) repository and f
 
 Follow [these instructions](https://github.com/ClaireGuerin/bash-install-vscode/).
 
-### Support or Contact
+### Support
 
 Having trouble installing VSCode? Call an assistant during class or send us an email!
 
