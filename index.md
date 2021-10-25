@@ -17,15 +17,9 @@
 
 ### Resources
 
-[Instructions](https://claireguerin.github.io/bash-install-vscode/getting-started)
+#### [Getting Started](https://claireguerin.github.io/bash-install-vscode/getting-started)
 
-#### Install Visual Studio Code on Windows (UWP and Local Machine)
-
-Go to [this](https://github.com/HHildenbrandt/uwp_vscode_setup) repository and follow the instructions.
-
-#### Install Visual Studio on Ubuntu
-
-Follow [these instructions](https://github.com/ClaireGuerin/bash-install-vscode/).
+#### Lecture Manual
 
 ### Support
 
