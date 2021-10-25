@@ -17,6 +17,8 @@
 
 ### Resources
 
+[Instructions](getting-started/index.md)
+
 #### Install Visual Studio Code on Windows (UWP and Local Machine)
 
 Go to [this](https://github.com/HHildenbrandt/uwp_vscode_setup) repository and follow the instructions.
