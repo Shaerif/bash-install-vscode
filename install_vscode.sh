@@ -36,3 +36,6 @@ code --install-extension jeff-hykin.better-cpp-syntax # Syntax highlighting
 code --install-extension ms-vscode.cmake-tools # CMake
 code --install-extension notskm.clang-tidy # Clang
 code --install-extension alesiong.clang-tidy-linter # Clang linting
+
+# Open the cmake-project in Visual Studio Code
+code cmake-project/
