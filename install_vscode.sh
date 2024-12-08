@@ -6,26 +6,33 @@
 # - GNU debugger
 # - g++/GNU compiler collection
 # - tools and libraries that are required to compile a program (G++, dpkg-dev, GCC and make, etc.).
-sudo apt install build-essential
+sudo apt update
+sudo apt install -y build-essential
 
-# 1: Get snap if not automatically installed on Ubuntu
+# 1: Get snap if not automatically installed on Ubuntu or Debian-based distros
 
 MINVER=16
 CURVER=$(lsb_release -rs | grep -o -E '[0-9]+\.' | grep -o -E '[0-9]+')
 
 if [ $CURVER -ge $MINVER ];
 then
-    echo "Ubuntu version >= 16.04. No need to install snap" 
+    echo "Ubuntu/Debian version >= 16.04. No need to install snap" 
 else
-    echo "Ubuntu version < 16.04. Trying to install snap..."
-    apt update
-    apt install snapd -y
+    echo "Ubuntu/Debian version < 16.04. Trying to install snap..."
+    sudo apt update
+    sudo apt install -y snapd
+fi
+
+# Ensure snapd is installed for Xubuntu versions
+if [ "$(lsb_release -is)" = "Xubuntu" ]; then
+    sudo apt update
+    sudo apt install -y snapd
 fi
 
 # 2: Install Visual Studio Code with snap
 
-snap install --classic code
-# snap refresh code
+sudo snap install --classic code
+# sudo snap refresh code
 
 # 3: Install Visual Studio Code extensions for C++:
 # Clang, Syntax highlighting, CMake, etc.
