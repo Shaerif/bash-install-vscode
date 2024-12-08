@@ -4,7 +4,7 @@ Bash scripts to install Visual Studio Code with GitHub Copilot on Ubuntu/Debian-
 ## Quick Install ⚡
 One-line installation command:
 ```bash
-wget -qO- https://raw.githubusercontent.com/yourusername/bash-install-vscode/main/install_vscode.sh | sudo bash
+wget -qO- https://raw.githubusercontent.com/Shaerif/bash-install-vscode/refs/heads/main/install_vscode.sh | sudo bash
 ```
 
 ## Requirements 📋
@@ -32,7 +32,7 @@ This script has been specially optimized for Xubuntu with:
 ## Manual Installation 🛠️
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/bash-install-vscode.git
+git clone https://github.com/Shaerif/bash-install-vscode.git
 cd bash-install-vscode
 chmod +x install_vscode.sh
 ./install_vscode.sh
