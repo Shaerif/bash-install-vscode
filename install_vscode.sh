@@ -2,6 +2,49 @@
 # Claire Guerin 2021-2024
 # run as root / admin
 
+# Default values
+INSTALL_PATH=""
+NON_INTERACTIVE=false
+CUSTOM_EXTENSIONS=""
+SKIP_SNAP=false
+SKIP_BUILD=false
+MINIMAL_INSTALL=false
+
+# Parse command line arguments
+while [ $# -gt 0 ]; do
+    case "$1" in
+        --install-path)
+            INSTALL_PATH="$2"
+            shift 2
+            ;;
+        --yes)
+            NON_INTERACTIVE=true
+            shift
+            ;;
+        --extensions)
+            CUSTOM_EXTENSIONS="$2"
+            shift 2
+            ;;
+        --no-snap)
+            SKIP_SNAP=true
+            shift
+            ;;
+        --no-build)
+            SKIP_BUILD=true
+            shift
+            ;;
+        --minimal)
+            MINIMAL_INSTALL=true
+            SKIP_BUILD=true
+            shift
+            ;;
+        *)
+            echo "❌ Unknown option: $1"
+            exit 1
+            ;;
+    esac
+done
+
 # Enable debug mode if needed
 if [ "$DEBUG" = "true" ]; then
     set -x
@@ -55,16 +98,21 @@ detect_distro
 # Install prerequisites
 echo "🔍 Detecting system: $DISTRO $VERSION"
 sudo apt update || { echo "❌ apt update failed"; exit 1; }
-sudo apt install -y build-essential curl wget || { echo "❌ Failed to install prerequisites"; exit 1; }
+if [ "$SKIP_BUILD" = "false" ]; then
+    sudo apt install -y build-essential curl wget || { echo "❌ Failed to install prerequisites"; exit 1; }
+else
+    sudo apt install -y curl wget || { echo "❌ Failed to install prerequisites"; exit 1; }
+fi
 
-# Install snapd if not present
-if ! command_exists snap; then
-    echo "📦 Installing snapd..."
-    sudo apt install -y snapd || { echo "❌ Failed to install snapd"; exit 1; }
-    sudo systemctl enable snapd || true
-    sudo systemctl start snapd || true
-    # Wait for snapd service to be ready
-    sleep 2
+# Install snapd if needed
+if [ "$SKIP_SNAP" = "false" ]; then
+    if ! command_exists snap; then
+        echo "📦 Installing snapd..."
+        sudo apt install -y snapd || { echo "❌ Failed to install snapd"; exit 1; }
+        sudo systemctl enable snapd || true
+        sudo systemctl start snapd || true
+        sleep 2
+    fi
 fi
 
 # Special handling for different distributions
@@ -85,11 +133,8 @@ case "$DISTRO" in
         ;;
 esac
 
-# Install VS Code
-echo "📥 Installing Visual Studio Code..."
-sudo snap install --classic code || {
-    echo "❌ Failed to install VS Code via snap. Trying alternative method..."
-    # Fallback to .deb package
+# Function to use .deb package for VS Code installation
+use_deb_package() {
     wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
     sudo install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/trusted.gpg.d/
     sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/trusted.gpg.d/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
@@ -98,15 +143,39 @@ sudo snap install --classic code || {
     rm packages.microsoft.gpg
 }
 
+# Install VS Code
+echo "📥 Installing Visual Studio Code..."
+if [ "$SKIP_SNAP" = "false" ]; then
+    sudo snap install --classic code || use_deb_package
+else
+    use_deb_package
+fi
+
 # Verify VS Code installation
 if ! command_exists code; then
     echo "❌ VS Code installation failed"
     exit 1
 fi
 
-# Install GitHub Copilot extensions
-echo "🤖 Installing GitHub Copilot extensions..."
-code --install-extension GitHub.copilot || echo "⚠️ Failed to install GitHub Copilot extension"
-code --install-extension GitHub.copilot-chat || echo "⚠️ Failed to install GitHub Copilot Chat extension"
+# Install extensions
+if [ -n "$CUSTOM_EXTENSIONS" ]; then
+    echo "🔧 Installing custom extensions..."
+    for ext in $CUSTOM_EXTENSIONS; do
+        code --install-extension "$ext" || echo "⚠️ Failed to install extension: $ext"
+    done
+else
+    echo "🤖 Installing GitHub Copilot extensions..."
+    code --install-extension GitHub.copilot || echo "⚠️ Failed to install GitHub Copilot extension"
+    code --install-extension GitHub.copilot-chat || echo "⚠️ Failed to install GitHub Copilot Chat extension"
+fi
+
+# Add custom installation path handling if specified
+if [ -n "$INSTALL_PATH" ]; then
+    echo "📁 Setting custom installation path: $INSTALL_PATH"
+    mkdir -p "$INSTALL_PATH"
+    if [ -d "/usr/share/code" ]; then
+        cp -r /usr/share/code/* "$INSTALL_PATH/"
+    fi
+fi
 
 echo "✅ Installation complete! Please log out and log back in for all changes to take effect."

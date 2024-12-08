@@ -39,7 +39,9 @@ chmod +x install_vscode.sh
 ```
 
 ## Update VS Code 🔄
-To update VS Code and extensions:
+There are several ways to update VS Code and its components:
+
+### Via Snap (Recommended)
 ```bash
 sudo snap refresh code
 code --install-extension @outdated --force
@@ -88,8 +90,10 @@ code --install-extension <extension-id> --force
 
 ## Advanced Installation Options 🛠️
 
+The script supports several command-line arguments for customized installation:
+
 ### Custom Installation Path
-Install VS Code in a specific location:
+Specify a custom installation directory:
 ```bash
 sudo bash install_vscode.sh --install-path /custom/path
 ```
@@ -104,6 +108,11 @@ sudo bash install_vscode.sh --yes
 Install specific extensions during setup:
 ```bash
 sudo bash install_vscode.sh --extensions "ms-python.python ms-vscode.cpptools"
+```
+### Component Selection
+Control which components to install by combining flags:
+```bash
+sudo bash install_vscode.sh --no-snap --no-build --minimal
 ```
 
 ### Debug Mode
