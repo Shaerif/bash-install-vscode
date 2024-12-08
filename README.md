@@ -46,11 +46,12 @@ code --install-extension @outdated --force
 ```
 
 ## Installed Components 📦
+- Visual Studio Code (latest stable via snap)
+- GitHub Copilot
+- GitHub Copilot Chat
 - Build essentials (gcc, g++, make)
-- Visual Studio Code (latest stable)
-- C++ extensions and tools
-- Clang tools and linting
-- Syntax highlighting
+- Git (latest stable)
+- Common development tools and libraries
 
 ## Restricted Mode 🔒
 
@@ -86,6 +87,24 @@ code --install-extension <extension-id> --force
 ```
 
 ## Advanced Installation Options 🛠️
+
+### Custom Installation Path
+Install VS Code in a specific location:
+```bash
+sudo bash install_vscode.sh --install-path /custom/path
+```
+
+### Non-Interactive Mode
+Run the script without any prompts:
+```bash
+sudo bash install_vscode.sh --yes
+```
+
+### Extension Management
+Install specific extensions during setup:
+```bash
+sudo bash install_vscode.sh --extensions "ms-python.python ms-vscode.cpptools"
+```
 
 ### Debug Mode
 Run the script in debug mode:
