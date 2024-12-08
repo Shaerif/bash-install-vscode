@@ -1,5 +1,19 @@
 # bash-install-vscode 🚀
-Bash scripts to install Visual Studio Code with GitHub Copilot on Ubuntu/Debian-based distributions
+
+Quick and easy VS Code installation with GitHub Copilot for Ubuntu/Debian systems.
+
+## Table of Contents 📑
+- [Quick Install](#quick-install-)
+- [Requirements](#requirements-)
+- [System Compatibility](#system-compatibility-%EF%B8%8F)
+- [Manual Installation](#manual-installation-%EF%B8%8F)
+- [Update VS Code](#update-vs-code-)
+- [Installed Components](#installed-components-)
+- [Restricted Mode](#restricted-mode-)
+- [Troubleshooting](#troubleshooting-)
+- [Advanced Installation](#advanced-installation-options-%EF%B8%8F)
+- [Upcoming Features](#upcoming-features-)
+- [Version History](#version-history-)
 
 ## Quick Install ⚡
 One-line installation command:
@@ -39,12 +53,19 @@ chmod +x install_vscode.sh
 ```
 
 ## Update VS Code 🔄
-There are several ways to update VS Code and its components:
 
-### Via Snap (Recommended)
+### Automatic Update (Recommended)
 ```bash
 sudo snap refresh code
 code --install-extension @outdated --force
+```
+
+### Manual Update Options
+```bash
+# Update specific components
+sudo bash install_vscode.sh --yes --minimal    # VS Code only
+sudo bash install_vscode.sh --yes --no-build   # VS Code + extensions
+sudo bash install_vscode.sh --extensions "github.copilot"  # Specific extension
 ```
 
 ## Installed Components 📦
@@ -121,17 +142,32 @@ Run the script in debug mode:
 bash -x install_vscode.sh
 ```
 
+## Upcoming Features 🚀
+- [ ] Offline installation support
+- [ ] Extension profiles (Development, Data Science, Web)
+- [ ] Auto-configuration backup/restore
+- [ ] Multi-user installation support
+- [ ] Custom themes and settings presets
+- [ ] Docker development container support
+- [ ] System health checks and optimization
+
 ## Version History 📅
-- 2024.2 (Dec 8): 🔄 Enhanced distribution support
+
+- 2024.2 (Current): 🛠️ Command-line Enhancement
+  - Added installation options (--install-path, --yes, etc.)
+  - Component selection support
+  - Custom extension installation
+  - Enhanced error handling and recovery
+- 2024.2: 🔄 Enhanced distribution support
   - Added comprehensive Xubuntu support
   - Improved distribution detection
   - Added support for older Ubuntu versions
   - Enhanced error handling
-- 2024.1 (Dec 8): 🎯 Removed CMake integration
-  - Removed cmake-project and related files
-  - Updated extensions to focus on GitHub Copilot
-  - Added emojis for better readability
-  - Removed unnecessary image files
+- 2024.1: 🤖 GitHub Copilot Focus
+  - Streamlined GitHub Copilot integration
+  - Removed legacy components
+  - Added documentation emojis
+  - Distribution detection improvements
 - 2023.2: Added support for all Debian-based distributions
 - 2023.1: Added Xubuntu support
 - 2021.1: Initial release
