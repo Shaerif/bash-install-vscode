@@ -1,48 +1,67 @@
 #!/bin/sh
-# Claire Guerin 2021
+# Claire Guerin 2021-2024
 # run as root / admin
 
-# Get build essentials, including: 
-# - GNU debugger
-# - g++/GNU compiler collection
-# - tools and libraries that are required to compile a program (G++, dpkg-dev, GCC and make, etc.).
+# Function to check if command exists
+command_exists() {
+    command -v "$1" >/dev/null 2>&1
+}
+
+# Function to detect distro
+detect_distro() {
+    if command_exists lsb_release; then
+        DISTRO=$(lsb_release -is)
+        VERSION=$(lsb_release -rs)
+    elif [ -f /etc/os-release ]; then
+        . /etc/os-release
+        DISTRO=$ID
+        VERSION=$VERSION_ID
+    else
+        echo "Cannot detect distribution. Assuming Debian-based system."
+        DISTRO="Unknown"
+        VERSION="0"
+    fi
+}
+
+# Detect distribution
+detect_distro
+
+# Install prerequisites
+echo "🔍 Detecting system: $DISTRO $VERSION"
 sudo apt update
-sudo apt install -y build-essential
+sudo apt install -y build-essential curl wget
 
-# 1: Get snap if not automatically installed on Ubuntu or Debian-based distros
-
-MINVER=16
-CURVER=$(lsb_release -rs | grep -o -E '[0-9]+\.' | grep -o -E '[0-9]+')
-
-if [ $CURVER -ge $MINVER ];
-then
-    echo "Ubuntu/Debian version >= 16.04. No need to install snap" 
-else
-    echo "Ubuntu/Debian version < 16.04. Trying to install snap..."
+# Install snapd if not present
+if ! command_exists snap; then
+    echo "📦 Installing snapd..."
     sudo apt update
     sudo apt install -y snapd
+    sudo systemctl enable snapd
+    sudo systemctl start snapd
 fi
 
-# Ensure snapd is installed for Xubuntu versions
-if [ "$(lsb_release -is)" = "Xubuntu" ]; then
-    sudo apt update
-    sudo apt install -y snapd
-fi
+# Special handling for different distributions
+case "$DISTRO" in
+    "Xubuntu"|"xubuntu")
+        echo "🎯 Detected Xubuntu - ensuring snapd compatibility..."
+        sudo apt install -y snapd
+        ;;
+    "Ubuntu"|"ubuntu")
+        echo "🎯 Detected Ubuntu - checking version compatibility..."
+        ;;
+    *)
+        echo "🎯 Detected Debian-based system - installing required components..."
+        sudo apt install -y apt-transport-https
+        ;;
+esac
 
-# 2: Install Visual Studio Code with snap
-
+# Install VS Code
+echo "📥 Installing Visual Studio Code..."
 sudo snap install --classic code
-# sudo snap refresh code
 
-# 3: Install Visual Studio Code extensions for C++:
-# Clang, Syntax highlighting, CMake, etc.
-code --install-extension ms-vscode.cpptools # C++
-code --install-extension ms-vscode.cpptools-extension-pack # C++ popular extensions
-code --install-extension ms-vscode.cpptools-themes # Colorization
-code --install-extension jeff-hykin.better-cpp-syntax # Syntax highlighting
-code --install-extension ms-vscode.cmake-tools # CMake
-code --install-extension notskm.clang-tidy # Clang
-code --install-extension alesiong.clang-tidy-linter # Clang linting
+# Install GitHub Copilot extensions
+echo "🤖 Installing GitHub Copilot extensions..."
+code --install-extension GitHub.copilot
+code --install-extension GitHub.copilot-chat
 
-# Open the cmake-project in Visual Studio Code
-code cmake-project/
+echo "✅ Installation complete!"
