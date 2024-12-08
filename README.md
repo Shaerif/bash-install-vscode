@@ -85,6 +85,14 @@ code --list-extensions
 code --install-extension <extension-id> --force
 ```
 
+## Advanced Installation Options 🛠️
+
+### Debug Mode
+Run the script in debug mode:
+```bash
+bash -x install_vscode.sh
+```
+
 ## Version History 📅
 - 2024.2 (Dec 8): 🔄 Enhanced distribution support
   - Added comprehensive Xubuntu support
