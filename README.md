@@ -2,6 +2,8 @@
 
 Quick and easy VS Code installation with GitHub Copilot for Ubuntu/Debian systems.
 
+A Bash script designed to install Visual Studio Code along with extensions such as GitHub Copilot and other custom extensions on Linux distributions, including Debian and Ubuntu.
+
 ## Table of Contents 📑
 - [Quick Install](#quick-install-)
 - [Requirements](#requirements-)
